@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mefnix | یادگیری هوشمندتر</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F7F8FC;--surface:#fff;--ink:#14183A;--muted:#5A6082;--line:#E2E5F2;--pri:#3B3FDB;--pri-ink:#fff;--ok:#12A87A;--warn:#E8890C;--soft:#ECEEFF;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0D1020;--surface:#161A33;--ink:#EEF0FF;--muted:#9BA1C7;--line:#262B4D;--pri:#8B8FFF;--pri-ink:#0D1020;--ok:#3DDBA6;--warn:#FFB84D;--soft:#1D2245}}
+:root[data-theme="dark"]{--bg:#0D1020;--surface:#161A33;--ink:#EEF0FF;--muted:#9BA1C7;--line:#262B4D;--pri:#8B8FFF;--pri-ink:#0D1020;--ok:#3DDBA6;--warn:#FFB84D;--soft:#1D2245}
+html{scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Vazirmatn,Tahoma,system-ui,sans-serif;line-height:1.9;transition:background .3s,color .3s}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--pri);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1080px;margin:auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:16px;height:64px}
+.logo{font-weight:800;font-size:1.4rem;letter-spacing:.5px;margin-inline-end:auto;font-family:system-ui,sans-serif}
+.logo b{color:var(--pri)}
+nav{display:flex;gap:22px;font-size:.95rem;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 22px;border-radius:12px;font:700 .95rem Vazirmatn,Tahoma,sans-serif;border:1.5px solid var(--pri);background:var(--pri);color:var(--pri-ink);cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.icon{width:40px;height:40px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;font-size:1.1rem}
+@media(max-width:720px){nav{display:none}.bar .btn{padding:8px 14px}}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:72px 0 56px}
+@media(max-width:860px){.hero{grid-template-columns:1fr;padding-top:40px}}
+h1{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.3;margin:0 0 16px;font-weight:800}
+.lead{color:var(--muted);font-size:1.08rem;max-width:34em}
+.tag{font-weight:700;font-size:1.1rem;margin:18px 0 28px}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+.map{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 20px 50px -30px var(--pri)}
+.map h3{margin:0 0 4px;font-size:1rem}
+.map small{color:var(--muted)}
+.sk{margin-top:16px}
+.sk div.l{display:flex;justify-content:space-between;font-size:.88rem;margin-bottom:4px}
+.track{height:12px;border-radius:99px;background:var(--soft);overflow:hidden}
+.fill{height:100%;width:0;border-radius:99px;background:var(--ok);transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.fill.weak{background:var(--warn)}
+.fill.fixed{background:var(--ok)}
+.status{margin-top:18px;padding:10px 14px;border-radius:12px;background:var(--soft);font-size:.9rem;min-height:46px}
+section{padding:64px 0}
+h2{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.4;margin:0 0 14px}
+.sub{color:var(--muted);max-width:40em;margin:0 0 8px}
+.about-box{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+@media(max-width:760px){.about-box{grid-template-columns:1fr}}
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:28px}
+.feat{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px}
+.feat h3{margin:8px 0 4px;font-size:1.1rem}
+.feat p{margin:0;color:var(--muted);font-size:.95rem}
+.feat .e{font-size:1.7rem}
+.feat:first-child{grid-column:1/-1;background:var(--soft);border-color:transparent}
+.band{background:var(--soft)}
+.three{display:flex;flex-wrap:wrap;gap:10px 28px;font-weight:800;font-size:1.2rem;margin-top:18px}
+ol.steps{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:0}
+.steps li{display:grid;grid-template-columns:44px 1fr;gap:16px;position:relative;padding-bottom:26px}
+.steps li:not(:last-child)::before{content:"";position:absolute;inset-inline-start:21px;top:44px;bottom:0;width:2px;background:var(--line)}
+.n{width:44px;height:44px;border-radius:50%;background:var(--pri);color:var(--pri-ink);display:grid;place-items:center;font-weight:800}
+.steps h3{margin:0;font-size:1.05rem}
+.steps p{margin:0;color:var(--muted);font-size:.95rem}
+.cta{text-align:center;background:var(--pri);color:var(--pri-ink);border-radius:26px;padding:56px 24px}
+.cta p{opacity:.9}
+.cta .btn{background:var(--pri-ink);color:var(--pri);border-color:var(--pri-ink)}
+.cta .btn.ghost{background:transparent;color:var(--pri-ink);border-color:currentColor}
+.cta .row{justify-content:center;margin-top:20px}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+@media(max-width:760px){.contact{grid-template-columns:1fr}}
+form{display:grid;gap:12px}
+input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font:inherit}
+textarea{min-height:120px;resize:vertical}
+.socials{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.socials a{padding:6px 16px;border:1.5px solid var(--line);border-radius:99px;background:var(--surface)}
+footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-size:.92rem}
+footer .top{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
+footer nav{display:flex}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="logo" href="#home">Mef<b>nix</b></a>
+  <nav aria-label="منوی اصلی"><a href="#home">خانه</a><a href="#features">قابلیت‌ها</a><a href="#about">درباره سازنده</a><a href="#contact">تماس با ما</a></nav>
+  <button class="icon" id="theme" aria-label="تغییر حالت تاریک و روشن">🌙</button>
+  <a class="btn" href="#start">شروع کنید</a>
+</div></header>
+
+<main>
+<div class="wrap">
+<section class="hero" id="home" style="padding-bottom:56px">
+  <div>
+    <h1>یادگیری را هوشمندتر کنیم.</h1>
+    <p class="lead"><b>Mefnix</b> یک پلتفرم هوشمند است که به دانش‌آموز کمک می‌کند بفهمد دقیقاً در چه بخش‌هایی مشکل دارد و برای بهتر شدن، تمرین مناسب دریافت کند.</p>
+    <p class="tag">بدان چه چیزی را بلد نیستی؛ بعد بهترش کن.</p>
+    <div class="row"><a class="btn" href="#start">شروع با Mefnix</a><a class="btn ghost" href="#features">آشنایی با قابلیت‌ها</a></div>
+  </div>
+  <div class="map" aria-label="نمونه نقشه مهارت">
+    <h3>نمونه نقشه مهارت</h3><small>نمایش نمونه از نحوه کار Mefnix</small>
+    <div class="sk"><div class="l"><span>معادله‌ها</span><span data-v>۸۵٪</span></div><div class="track"><div class="fill" data-w="85"></div></div></div>
+    <div class="sk"><div class="l"><span>کسرها</span><span data-v>۷۲٪</span></div><div class="track"><div class="fill" data-w="72"></div></div></div>
+    <div class="sk"><div class="l"><span>درصد</span><span id="pv">۳۸٪</span></div><div class="track"><div class="fill weak" id="weak" data-w="38"></div></div></div>
+    <div class="status" id="status" aria-live="polite">در حال بررسی پاسخ‌ها…</div>
+  </div>
+</section>
+</div>
+
+<div class="band"><div class="wrap"><section id="what" class="reveal">
+  <h2>Mefnix فقط یک برنامه آموزشی نیست.</h2>
+  <p class="sub">خیلی وقت‌ها دانش‌آموز درس را می‌خواند و تمرین هم حل می‌کند، اما نمی‌داند دقیقاً کجای کارش مشکل دارد.</p>
+  <p class="sub">Mefnix تلاش می‌کند این مشکل را حل کند. با بررسی پاسخ‌ها و عملکرد دانش‌آموز، بخش‌هایی که نیاز به تمرین بیشتری دارند مشخص می‌شوند و مسیر تمرین می‌تواند متناسب با همان نیازها تنظیم شود.</p>
+</section></div></div>
+
+<div class="wrap">
+<section id="features" class="reveal">
+  <h2>امکاناتی که Mefnix را متفاوت می‌کند</h2>
+  <div class="feats">
+    <div class="feat"><div class="e">🧠</div><h3>شناسایی نقاط ضعف</h3><p>Mefnix فقط به درست یا غلط بودن جواب نگاه نمی‌کند؛ هدفش پیدا کردن مباحثی است که دانش‌آموز در آن‌ها نیاز به تمرین بیشتری دارد.</p></div>
+    <div class="feat"><div class="e">🎯</div><h3>تمرین متناسب</h3><p>به‌جای اینکه همه یک سری سؤال یکسان ببینند، تمرین‌ها می‌توانند بر اساس عملکرد دانش‌آموز انتخاب شوند.</p></div>
+    <div class="feat"><div class="e">📊</div><h3>بررسی پیشرفت</h3><p>دانش‌آموز می‌تواند روند عملکرد خود را ببیند و متوجه شود در چه بخش‌هایی بهتر شده است.</p></div>
+    <div class="feat"><div class="e">🔄</div><h3>ارزیابی دوباره</h3><p>بعد از تمرین، عملکرد دوباره بررسی می‌شود تا مشخص شود آیا مشکل برطرف شده یا هنوز نیاز به تمرین وجود دارد.</p></div>
+    <div class="feat"><div class="e">🤖</div><h3>هوشمند و شخصی‌سازی‌شده</h3><p>هدف Mefnix این است که تجربه یادگیری برای هر دانش‌آموز تا حد امکان متناسب با خودش باشد.</p></div>
+  </div>
+</section>
+
+<section class="reveal">
+  <h2>به‌جای حدس زدن، بفهم.</h2>
+  <p class="sub">گاهی مشکل این نیست که دانش‌آموز درس نخوانده است. ممکن است فقط یک مفهوم کوچک را درست متوجه نشده باشد.</p>
+  <p class="sub">Mefnix تلاش می‌کند همان نقطه را پیدا کند تا دانش‌آموز بتواند دقیق‌تر روی چیزی که نیاز دارد تمرکز کند.</p>
+  <div class="three"><span>کمتر سردرگمی.</span><span>تمرین هدفمندتر.</span><span>پیشرفت قابل مشاهده.</span></div>
+</section>
+
+<section class="reveal">
+  <h2>مسیر استفاده از Mefnix: ساده، مرحله‌به‌مرحله</h2>
+  <ol class="steps">
+    <li><span class="n">۱</span><div><h3>پاسخ بده</h3><p>با سؤال‌ها و تمرین‌ها شروع کن.</p></div></li>
+    <li><span class="n">۲</span><div><h3>عملکردت بررسی می‌شود</h3><p>Mefnix پاسخ‌هایت را بررسی می‌کند.</p></div></li>
+    <li><span class="n">۳</span><div><h3>نقاط نیازمند تمرین مشخص می‌شوند</h3><p>مباحثی که نیاز به توجه بیشتری دارند شناسایی می‌شوند.</p></div></li>
+    <li><span class="n">۴</span><div><h3>تمرین کن</h3><p>تمرین‌های مناسب‌تر را انجام بده.</p></div></li>
+    <li><span class="n">۵</span><div><h3>دوباره ارزیابی شو</h3><p>نتیجه را بررسی کن و ببین چقدر پیشرفت کرده‌ای.</p></div></li>
+  </ol>
+</section>
+
+<section class="reveal">
+  <h2>Mefnix برای دانش‌آموزانی است که می‌خواهند بهتر یاد بگیرند.</h2>
+  <p class="sub">فرقی نمی‌کند در یک مبحث قوی باشی یا هنوز با آن مشکل داشته باشی. Mefnix با هدف کمک به پیدا کردن نقاط قابل بهبود و ساختن یک مسیر یادگیری مناسب طراحی شده است.</p>
+</section>
+
+<section id="about" class="reveal">
+  <h2>پشت Mefnix چه کسی است؟</h2>
+  <div class="about-box">
+    <div>
+      <p class="sub">Mefnix با یک هدف ساده ساخته شده است:</p>
+      <p style="font-weight:800;font-size:1.25rem;margin:0">یادگیری نباید فقط به حفظ کردن جواب‌ها محدود شود.</p>
+    </div>
+    <div>
+      <p class="sub" style="margin-top:0">ایده Mefnix از اینجا شکل گرفت که به‌جای اینکه فقط جواب درست یا غلط را ببینیم، تلاش کنیم بفهمیم <b>چرا یک دانش‌آموز در یک بخش مشکل دارد</b> و چطور می‌توان به او کمک کرد بهتر شود.</p>
+      <p class="sub">Mefnix یک پروژه در حال توسعه است و هدف آن ساختن تجربه‌ای ساده‌تر، هوشمندتر و کاربردی‌تر برای یادگیری است.</p>
+      <p><b>ساخته شده با ایده‌ای ساده؛ برای یادگیری بهتر.</b></p>
+    </div>
+  </div>
+</section>
+
+<section id="start" class="reveal">
+  <div class="cta">
+    <h2>آماده‌ای Mefnix را امتحان کنی؟</h2>
+    <p>یادگیری بهتر از جایی شروع می‌شود که بفهمی دقیقاً باید روی چه چیزی کار کنی.</p>
+    <p><b>با Mefnix شروع کن.</b></p>
+    <div class="row"><a class="btn" href="#" id="dl">شروع کنید</a><a class="btn ghost" href="#" id="dl2">⬇ دانلود اپ</a></div>
+  </div>
+</section>
+
+<section id="contact" class="reveal">
+  <h2>با ما در ارتباط باشید</h2>
+  <div class="contact">
+    <div>
+      <p class="sub">نظر، پیشنهاد یا مشکلی دارید؟ خوشحال می‌شویم از شما بشنویم.</p>
+      <p><b>ایمیل:</b><br><a href="mailto:nikanalavi1391@gmail.com" dir="ltr" style="color:var(--pri)">nikanalavi1391@gmail.com</a></p>
+      <p style="margin-bottom:0"><b>شبکه‌های اجتماعی:</b></p>
+      <div class="socials"><a href="https://rubika.ir/MeFNiXx" rel="noopener">Rubika</a></div>
+    </div>
+    <form id="cf">
+      <input name="n" placeholder="نام" aria-label="نام" required>
+      <input name="e" type="email" placeholder="ایمیل" aria-label="ایمیل" required>
+      <textarea name="m" placeholder="پیام" aria-label="پیام" required></textarea>
+      <button class="btn" type="submit">ارسال پیام</button>
+    </form>
+  </div>
+</section>
+</div>
+</main>
+
+<footer><div class="wrap">
+  <div class="top">
+    <div><div class="logo" style="margin:0">Mef<b>nix</b></div>یادگیری هوشمند، ساده‌تر و هدفمندتر.</div>
+    <nav aria-label="منوی فوتر"><a href="#home">خانه</a><a href="#features">قابلیت‌ها</a><a href="#about">درباره سازنده</a><a href="#contact">تماس با ما</a></nav>
+  </div>
+  <p style="margin:22px 0 0">© ۲۰۲۶ Mefnix — تمامی حقوق محفوظ است.<br>کانال روبیکا <span dir="ltr">@MeFNiXx</span> · سازنده نیکان علوی</p>
+</div></footer>
+
+<script>
+// Theme
+var root=document.documentElement,tb=document.getElementById('theme');
+function dark(){var t=root.getAttribute('data-theme');return t?t==='dark':matchMedia('(prefers-color-scheme:dark)').matches}
+function paint(){tb.textContent=dark()?'☀️':'🌙'}
+try{var s=localStorage.getItem('mefnix-theme');if(s)root.setAttribute('data-theme',s)}catch(e){}
+paint();
+tb.onclick=function(){var n=dark()?'light':'dark';root.setAttribute('data-theme',n);try{localStorage.setItem('mefnix-theme',n)}catch(e){}paint()};
+
+// Hero demo: bars fill, weak one is found, then improves after practice
+var fa=function(n){return String(n).replace(/\d/g,function(d){return '۰۱۲۳۴۵۶۷۸۹'[d]})};
+var fills=document.querySelectorAll('.fill'),weak=document.getElementById('weak'),st=document.getElementById('status'),pv=document.getElementById('pv');
+setTimeout(function(){fills.forEach(function(f){f.style.width=f.dataset.w+'%'})},300);
+setTimeout(function(){st.textContent='نقطه ضعف پیدا شد: «درصد» نیاز به تمرین بیشتری دارد.'},1800);
+setTimeout(function(){st.textContent='تمرین‌های مناسب «درصد» آماده شد…'},3600);
+setTimeout(function(){weak.style.width='81%';weak.classList.remove('weak');weak.classList.add('fixed');pv.textContent=fa(81)+'٪';st.textContent='ارزیابی دوباره: پیشرفت قابل مشاهده است.'},5200);
+
+// Scroll reveal
+var els=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(a){a.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)})}else{els.forEach(function(e){e.classList.add('in')})}
+
+// Download links: replace '#' with the real app URL
+var APP_URL='#';
+['dl','dl2'].forEach(function(id){document.getElementById(id).href=APP_URL});
+
+// Contact form opens the visitor's email app
+document.getElementById('cf').onsubmit=function(ev){ev.preventDefault();var f=ev.target;
+location.href='mailto:nikanalavi1391@gmail.com?subject='+encodeURIComponent('پیام از '+f.n.value)+'&body='+encodeURIComponent(f.m.value+'\n\n'+f.e.value)};
+</script>
+</body>
+</html>
